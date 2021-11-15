@@ -1,0 +1,12 @@
+POST http://localhost:4000/api/bots
+Content-Type: application/json
+
+{
+  "id": "uuidv4()",
+  "status": "botsBody.status",
+  "location": {
+    "dropoffLat": "botsBody.dropoffLat",
+    "dropoffLon": "botsBody.dropoffLon"
+  },
+  "zoneId": "botsBody.zoneId"
+}

@@ -1,0 +1,17 @@
+POST http://localhost:4000/api/delivery_orders 
+Content-Type: application/json
+
+{
+  "id": "uuidv4()",
+  "creationDate": "new Date().toISOString()",
+  "status": "",
+  "pickup": {
+    "pickupLat": 0,
+    "pickupLon": 0
+  },
+  "dropoff": {
+    "dropoffLat": 0,
+    "dropoffLon": 0
+  },
+  "zoneId": ""
+}
