@@ -2,11 +2,32 @@ const { Router } = require('express')
 const router = Router()
 const admin = require('firebase-admin')
 const { v4: uuidv4 } = require('uuid')
+const {Storage} = require('@google-cloud/storage');
+
+const projectId = 'kiwibot-challenge-25486'
+const keyFilename = 'GOOGLE_APPLICATION_CREDENTIALS'
+const storage = new Storage({projectId, keyFilename});
+
+async function listBuckets() {
+  try {
+    const [buckets] = await storage.getBuckets();
+
+    console.log('Buckets:');
+    buckets.forEach(bucket => {
+      console.log(bucket.name);
+    });
+  } catch (err) {
+    console.error('ERROR:', err);
+  }
+}
+listBuckets();
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
   databaseURL: 'https://kiwibot-challenge-25486-default-rtdb.firebaseio.com/'
 })
+
+
 
 const db = admin.database()
 
