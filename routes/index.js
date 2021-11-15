@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid')
 const {Storage} = require('@google-cloud/storage');
 
 const projectId = 'kiwibot-challenge-25486'
-const keyFilename = 'GOOGLE_APPLICATION_CREDENTIALS'
+const keyFilename = process.env.GOOGLE_APPLICATION_CREDENTIALS
 const storage = new Storage({projectId, keyFilename});
 
 async function listBuckets() {
