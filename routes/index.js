@@ -1,33 +1,25 @@
 const { Router } = require('express')
 const router = Router()
-const admin = require('firebase-admin')
 const { v4: uuidv4 } = require('uuid')
-const {Storage} = require('@google-cloud/storage');
 
-const projectId = 'kiwibot-challenge-25486'
-const keyFilename = process.env.GOOGLE_APPLICATION_CREDENTIALS
-const storage = new Storage({projectId, keyFilename});
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-async function listBuckets() {
-  try {
-    const [buckets] = await storage.getBuckets();
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAKp84ueZIMP1lJfX6ciuHn2GdRyM8EkEM",
+  authDomain: "kiwibot-challenge-25486.firebaseapp.com",
+  databaseURL: "https://kiwibot-challenge-25486-default-rtdb.firebaseio.com",
+  projectId: "kiwibot-challenge-25486",
+  storageBucket: "kiwibot-challenge-25486.appspot.com",
+  messagingSenderId: "361452414690",
+  appId: "1:361452414690:web:76db6e9c9ef4de2fc6e0bb"
+};
 
-    console.log('Buckets:');
-    buckets.forEach(bucket => {
-      console.log(bucket.name);
-    });
-  } catch (err) {
-    console.error('ERROR:', err);
-  }
-}
-listBuckets();
-
-admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
-  databaseURL: 'https://kiwibot-challenge-25486-default-rtdb.firebaseio.com/'
-})
-
-
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 const db = admin.database()
 
