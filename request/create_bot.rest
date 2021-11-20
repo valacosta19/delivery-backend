@@ -1,4 +1,4 @@
-POST http://localhost:4000/api/bots
+POST http://kiwibot-challenge-25486.firebaseapp.com/api/bots
 Content-Type: application/json
 
 {
