@@ -2,8 +2,10 @@ const { Router } = require('express')
 const router = Router()
 const { v4: uuidv4 } = require('uuid')
 
+const admin = require('firebase-admin')
+
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+const { initializeApp } = require('firebase-admin/app')
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -29,7 +31,6 @@ router.get('/', (req, res) => {
     res.send(Object.values(data))
   })
 })
-
 
 router.post('/api/delivery_orders', (req, res) => {
   const ordersBody = req.body
