@@ -1,1 +1,0 @@
-GET http://kiwibot-challenge-25486.firebaseapp.com/api/delivery_orders
