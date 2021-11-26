@@ -11,24 +11,24 @@ const { initializeApp } = require('firebase-admin/app')
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAKp84ueZIMP1lJfX6ciuHn2GdRyM8EkEM",
-  authDomain: "kiwibot-challenge-25486.firebaseapp.com",
-  databaseURL: "https://kiwibot-challenge-25486-default-rtdb.firebaseio.com",
-  projectId: "kiwibot-challenge-25486",
-  storageBucket: "kiwibot-challenge-25486.appspot.com",
-  messagingSenderId: "361452414690",
-  appId: "1:361452414690:web:76db6e9c9ef4de2fc6e0bb"
-};
+  apiKey: process.env.API_KEY,
+  authDomain: 'kiwibot-challenge-25486.firebaseapp.com',
+  databaseURL: 'https://kiwibot-challenge-25486-default-rtdb.firebaseio.com',
+  projectId: 'kiwibot-challenge-25486',
+  storageBucket: 'kiwibot-challenge-25486.appspot.com',
+  messagingSenderId: '361452414690',
+  appId: '1:361452414690:web:76db6e9c9ef4de2fc6e0bb'
+}
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig)
 
 const db = admin.database()
 
 router.get('/', (req, res) => {
   db.ref('deliveries').once('value', (snapshot) => {
-    const data = snapshot.val();
-    res.send(Object.values(data))
+    const data = snapshot.val()
+    res.send(data)
   })
 })
 
@@ -56,7 +56,7 @@ router.post('/api/delivery_orders', (req, res) => {
     zoneId: ordersBody.zoneId
   }
 
-  db.ref('deliveries').push(newOrder);
+  db.ref('deliveries').push(newOrder)
   res.status(201).json(newOrder)
 })
 

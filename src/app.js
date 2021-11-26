@@ -6,7 +6,7 @@ const cors = require('cors')
 const app = express()
 const logger = require('../loggerMiddleware')
 
-//settings
+// settings
 app.set('port', process.env.PORT || 3001)
 
 // middleware funcion que intercepta la peticion que esta pasando por tu API
@@ -15,6 +15,6 @@ app.use(express.json())
 app.use(logger)
 
 // routes
-app.use(require('./routes/index'));
+app.use(require('./routes/index'))
 
-module.exports = app;
+module.exports = app
